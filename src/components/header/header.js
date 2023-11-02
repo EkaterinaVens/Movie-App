@@ -46,7 +46,7 @@ function Header(props) {
 
 Header.propTypes = {
   updateData: PropTypes.func.isRequired,
-  getRatedMovies: PropTypes.isRequired,
+  getRatedMovies: PropTypes.func.isRequired,
   updateRated: PropTypes.func.isRequired,
 };
 

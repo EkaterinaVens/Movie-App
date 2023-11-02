@@ -123,6 +123,7 @@ Movie.defaultProps = {
   genres: [],
   grade: 0.0,
   poster: 'https://pojproject-spb.ru/design/clients/!pustycshka.jpg',
+  updateGrade: null,
 };
 Movie.propTypes = {
   name: PropTypes.string.isRequired,
@@ -130,7 +131,7 @@ Movie.propTypes = {
   description: PropTypes.string.isRequired,
   poster: PropTypes.string,
   rating: PropTypes.number.isRequired,
-  updateGrade: PropTypes.func.isRequired,
+  updateGrade: PropTypes.func,
   addMovieListRating: PropTypes.func.isRequired,
   grade: PropTypes.number,
   isRated: PropTypes.bool.isRequired,

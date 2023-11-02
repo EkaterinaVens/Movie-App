@@ -13,7 +13,7 @@ export default class App extends React.Component {
       count: null,
       name: 'people',
       guestSession: null,
-      // grade: null,
+      // grade: 0.0,
       isRated: false,
       countLocalMovies: 0,
       genres: [],
@@ -46,9 +46,9 @@ export default class App extends React.Component {
     this.setState({ isRated: value });
   };
 
-  // updateGrade = (value) => {
-  //   this.setState({ grade: value });
-  // };
+  updateGrade = (value) => {
+    this.setState({ grade: value });
+  };
 
   addMovieListRating = async ({ id }) => {
     const { guestSession, movies, countLocalMovies } = this.state;
@@ -113,8 +113,16 @@ export default class App extends React.Component {
   };
 
   render() {
-    const { movies, loading, count, name, isRated, countLocalMovies, genres } =
-      this.state;
+    const {
+      movies,
+      loading,
+      count,
+      name,
+      isRated,
+      countLocalMovies,
+      genres,
+      grade,
+    } = this.state;
 
     const spinner = loading ? <Spinner /> : null;
     const content = !loading ? (
@@ -130,6 +138,7 @@ export default class App extends React.Component {
         isRated={isRated}
         countLocalMovies={countLocalMovies}
         genres={genres}
+        grade={grade}
       />
     ) : null;
     return (
