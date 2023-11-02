@@ -1,0 +1,89 @@
+.movieCard {
+  width: 451px;
+  height: 279px;
+  box-shadow: 0px 4px 12px 0px #00000026;
+  display: flex;
+  margin-top: 36px;
+}
+.imgMovie {
+  width: 183px;
+  height: 279px;
+}
+.name {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: left;
+  flex-basis: fit-content;
+}
+.description {
+  font-family: 'Inter' serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin-top: 10px;
+}
+.dataMovie {
+  /* display: flex; */
+  flex-direction: column;
+  padding: 10px 20px;
+  justify-content: space-between;
+  width: -webkit-fill-available;
+}
+
+.tags {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+.date {
+  font-size: 12px;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #827e7e;
+}
+
+.dataMovie {
+  position: relative;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rating {
+  border: 2px solid #e9d100;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  /* position: absolute;
+  top: 20px;
+  right: 20px; */
+  text-align: center;
+  line-height: 25px;
+  font-size: 12px;
+  font-weight: 400;
+  /* line-height: 22px; */
+}
+
+:where(.css-dev-only-do-not-override-xu9wm8).ant-rate
+  .ant-rate-star:not(:last-child) {
+  margin-inline-end: 3px;
+}
+
+.rate {
+  justify-self: end;
+}
+
+:where(.css-dev-only-do-not-override-xu9wm8).ant-rate {
+  position: absolute;
+  bottom: 20px;
+}
