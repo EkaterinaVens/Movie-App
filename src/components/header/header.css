@@ -20,3 +20,10 @@
   > .ant-tabs-nav::before {
   border: none;
 }
+
+:where(.css-xu9wm8).ant-tabs-top > .ant-tabs-nav::before,
+:where(.css-xu9wm8).ant-tabs-bottom > .ant-tabs-nav::before,
+:where(.css-xu9wm8).ant-tabs-top > div > .ant-tabs-nav::before,
+:where(.css-xu9wm8).ant-tabs-bottom > div > .ant-tabs-nav::before {
+  border: none;
+}
