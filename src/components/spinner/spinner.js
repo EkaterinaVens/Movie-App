@@ -1,5 +1,5 @@
 import { Spin } from 'antd';
-import './spinner.css';
+import './spinner.scss';
 
 function Spinner() {
   return (

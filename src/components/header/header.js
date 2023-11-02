@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
 import { Tabs, Input } from 'antd';
-import './header.css';
+import './header.scss';
 
 function Header(props) {
   const { updateData, getRatedMovies, updateRated } = props;

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Pagination } from 'antd';
 import Movie from '../movie/movie';
 
-import './movieList.css';
+import './movieList.scss';
 
 function MovieList(props) {
   const {
@@ -39,7 +39,7 @@ function MovieList(props) {
               onChangePage(page);
             }}
             defaultCurrent={1}
-            total={isRated ? (countLocalMovies || 1) : count}
+            total={isRated ? countLocalMovies || 1 : count}
             defaultPageSize={20}
             showSizeChanger={false}
             itemActiveBg="#1890FF"

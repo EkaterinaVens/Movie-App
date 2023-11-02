@@ -4,7 +4,7 @@ import { format } from 'date-fns';
 import { enGB } from 'date-fns/locale';
 import PropTypes from 'prop-types';
 import { Space, Tag, Rate } from 'antd';
-import './movie.css';
+import './movie.scss';
 // import { defaultProps } from 'react-detect-offline';
 
 let maxId = 1000000;
@@ -105,6 +105,8 @@ function Movie(props) {
           allowHalf
           defaultValue={isRated ? grade : 0}
           count={10}
+          marginXXS={3}
+          paddingXXS={3}
           className="rate"
           onChange={(value) => {
             updateGrade(value);

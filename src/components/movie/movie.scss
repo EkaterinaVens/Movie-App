@@ -1,0 +1,97 @@
+.movieCard {
+  width: 451px;
+  height: 279px;
+  box-shadow: 0px 4px 12px 0px #00000026;
+  display: flex;
+  margin-top: 36px;
+  position: relative;
+  @media (max-width: 930px) {
+    width: 388px;
+    height: 245px;
+    padding: 6px 10px;
+  }
+  .imgMovie {
+    width: 183px;
+    height: 279px;
+    @media (max-width: 930px) {
+      width: 60px;
+      height: 91px;
+    }
+  }
+  .dataMovie {
+    flex-direction: column;
+    padding: 10px 20px;
+    justify-content: space-between;
+    width: -webkit-fill-available;
+    @media (max-width: 930px) {
+      padding: 0;
+      padding-left: 13px;
+    }
+    .ant-rate {
+      position: absolute;
+      bottom: 20px;
+      @media (max-width: 930px) {
+        right: 20px;
+      }
+      .ant-rate-star {
+        &:not(:last-child) {
+          margin-inline-end: 3px;
+        }
+      }
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      .name {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 28px;
+        letter-spacing: 0em;
+        text-align: left;
+        flex-basis: fit-content;
+      }
+      .rating {
+        border: 2px solid #e9d100;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 25px;
+        font-size: 12px;
+        font-weight: 400;
+      }
+    }
+    .description {
+      font-family: 'Inter' serif;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: 0px;
+      text-align: left;
+      margin-top: 10px;
+      @media (max-width: 930px) {
+        position: absolute;
+        width: 367px;
+        height: 92px;
+        left: 10px;
+        top: 110px;
+      }
+    }
+    .date {
+      font-size: 12px;
+      font-family: Inter, sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: 0px;
+      text-align: left;
+      color: #827e7e;
+    }
+    .tags {
+      display: flex;
+      flex-direction: row;
+      margin-top: 10px;
+    }
+  }
+}

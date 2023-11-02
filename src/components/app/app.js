@@ -3,6 +3,7 @@ import Header from '../header/header';
 import MovieList from '../movieList/movieList';
 import MovieService from '../../services/movieService';
 import Spinner from '../spinner';
+import './app.scss';
 
 export default class App extends React.Component {
   constructor() {
