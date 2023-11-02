@@ -91,3 +91,8 @@
   position: absolute;
   bottom: 20px;
 }
+
+:where(.css-xu9wm8).ant-rate {
+  position: absolute;
+  bottom: 20px;
+}
