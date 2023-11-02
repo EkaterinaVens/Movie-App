@@ -1,1 +1,1 @@
-https://movie-app-git-main-ekaterinavens.vercel.app/
+https://https://movie-app-sand-phi.vercel.app/
