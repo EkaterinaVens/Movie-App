@@ -79,6 +79,10 @@
   margin-inline-end: 3px;
 }
 
+:where(.css-xu9wm8).ant-rate .ant-rate-star:not(:last-child) {
+  margin-inline-end: 3px;
+}
+
 .rate {
   justify-self: end;
 }
