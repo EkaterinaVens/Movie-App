@@ -3,6 +3,7 @@ import Header from '../header/header';
 import MovieList from '../movieList/movieList';
 import MovieService from '../../services/movieService';
 import Spinner from '../spinner';
+import { MovieServiceProvider } from '../movieServiceContext';
 import './app.scss';
 
 export default class App extends React.Component {
@@ -138,29 +139,31 @@ export default class App extends React.Component {
         addMovieListRating={this.addMovieListRating}
         isRated={isRated}
         countLocalMovies={countLocalMovies}
-        genres={genres}
+        // genres={genres}
         grade={grade}
       />
     ) : null;
     return (
       <div>
-        {navigator.onLine ? (
-          <>
-            <Header
-              search={this.getMovies}
-              updateData={this.updateData}
-              value={name}
-              onChange={this.debouncedGetMovies}
-              getRatedMovies={this.getRatedMovies}
-              updateRated={this.updateRated}
-              isRated={isRated}
-            />
-            {spinner}
-            {content}
-          </>
-        ) : (
-          alert('Сейчас вы не в сети. Проверьте свое соединение.')
-        )}
+        <MovieServiceProvider value={genres}>
+          {navigator.onLine ? (
+            <>
+              <Header
+                search={this.getMovies}
+                updateData={this.updateData}
+                value={name}
+                onChange={this.debouncedGetMovies}
+                getRatedMovies={this.getRatedMovies}
+                updateRated={this.updateRated}
+                isRated={isRated}
+              />
+              {spinner}
+              {content}
+            </>
+          ) : (
+            alert('Сейчас вы не в сети. Проверьте свое соединение.')
+          )}
+        </MovieServiceProvider>
       </div>
     );
   }

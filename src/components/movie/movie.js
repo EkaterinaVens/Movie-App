@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import { enGB } from 'date-fns/locale';
 import PropTypes from 'prop-types';
 import { Space, Tag, Rate } from 'antd';
+import { MovieServiceConsumer } from '../movieServiceContext';
 import './movie.scss';
 
 let maxId = 1000000;
@@ -69,7 +70,6 @@ function Movie(props) {
     addMovieListRating,
     isRated,
     genreIds,
-    genres,
   } = props;
 
   const currentRating = rating.toFixed(1);
@@ -90,13 +90,14 @@ function Movie(props) {
           </div>
           <p className="date">{parseDate(date)}</p>
           <Space size={[0, 8]} wrap className="tags">
-            {genres.map((el) => {
-              maxId += maxId + 1;
-
-              return genreIds.length !== 0 && genreIds.includes(el.id) ? (
-                <Tag key={el.name}>{el.name}</Tag>
-              ) : null;
-            })}
+            <MovieServiceConsumer>
+              {(genres) => genres.map((el) => {
+                  maxId += maxId + 1;
+                  return genreIds.length !== 0 && genreIds.includes(el.id) ? (
+                    <Tag key={el.name}>{el.name}</Tag>
+                  ) : null;
+                })}
+            </MovieServiceConsumer>
           </Space>
           <p className="description">{minText(description)}</p>
         </div>
@@ -121,7 +122,6 @@ export default Movie;
 
 Movie.defaultProps = {
   genreIds: [],
-  genres: [],
   grade: 0.0,
   poster: 'https://pojproject-spb.ru/design/clients/!pustycshka.jpg',
   updateGrade: null,
@@ -139,10 +139,4 @@ Movie.propTypes = {
 
   isRated: PropTypes.bool.isRequired,
   genreIds: PropTypes.arrayOf(PropTypes.number),
-  genres: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-    }),
-  ),
 };
