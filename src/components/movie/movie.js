@@ -58,6 +58,8 @@ const gluingSrc = (img) => {
 
 function Movie(props) {
   const {
+    id,
+    grade,
     name,
     date,
     description,
@@ -65,7 +67,6 @@ function Movie(props) {
     rating,
     updateGrade,
     addMovieListRating,
-    grade,
     isRated,
     genreIds,
     genres,
@@ -101,14 +102,14 @@ function Movie(props) {
         </div>
         <Rate
           allowHalf
-          defaultValue={isRated ? grade : 0}
+          defaultValue={isRated ? localStorage.getItem(id) : grade}
           count={10}
           marginXXS={3}
           paddingXXS={3}
           className="rate"
           onChange={(value) => {
             updateGrade(value);
-            addMovieListRating(props);
+            addMovieListRating(props, value);
           }}
         />
       </div>
@@ -126,6 +127,8 @@ Movie.defaultProps = {
   updateGrade: null,
 };
 Movie.propTypes = {
+  id: PropTypes.number.isRequired,
+  grade: PropTypes.string,
   name: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
@@ -133,7 +136,7 @@ Movie.propTypes = {
   rating: PropTypes.number.isRequired,
   updateGrade: PropTypes.func,
   addMovieListRating: PropTypes.func.isRequired,
-  grade: PropTypes.number,
+
   isRated: PropTypes.bool.isRequired,
   genreIds: PropTypes.arrayOf(PropTypes.number),
   genres: PropTypes.arrayOf(

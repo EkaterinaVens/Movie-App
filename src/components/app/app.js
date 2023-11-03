@@ -14,7 +14,7 @@ export default class App extends React.Component {
       count: null,
       name: 'people',
       guestSession: null,
-      // grade: 0.0,
+      grade: 0.0,
       isRated: false,
       countLocalMovies: 0,
       genres: [],
@@ -51,13 +51,17 @@ export default class App extends React.Component {
     this.setState({ grade: value });
   };
 
-  addMovieListRating = async ({ id }) => {
+  addMovieListRating = async ({ id }, value) => {
     const { guestSession, movies, countLocalMovies } = this.state;
     const movieObj = movies.filter((movie) => movie.id === id);
     const currentLocalMovie = JSON.parse(localStorage.getItem('moviesLocal'));
+    localStorage.setItem(id, value);
+
+    localStorage.getItem(id);
 
     if (localStorage.length === 0) {
       localStorage.setItem('moviesLocal', JSON.stringify(movieObj));
+
       this.setState({ countLocalMovies: 1 });
     } else {
       const individLocalMovies = currentLocalMovie.filter(
@@ -85,12 +89,8 @@ export default class App extends React.Component {
   };
 
   getMovies = async (name = 'people', num = 1) => {
+    // const { movies } = this.state;
     await MovieService.getMovies(name, num).then(({ items, count }) => {
-      if (count === 0) {
-        alert(
-          'Фильмы не найдены.\nЛучше займитесь чем-нибудь полезным, например закройте все проекты до дедлайна =)',
-        );
-      }
       this.setState(() => {
         const newArr = items.map((movie) => ({
           key: movie.id,
@@ -105,7 +105,7 @@ export default class App extends React.Component {
         }));
 
         return {
-          movies: newArr,
+          movies: count ? newArr : null,
           loading: false,
           count,
         };
@@ -128,7 +128,6 @@ export default class App extends React.Component {
     const spinner = loading ? <Spinner /> : null;
     const content = !loading ? (
       <MovieList
-        // movies={movies}
         movies={
           isRated ? JSON.parse(localStorage.getItem('moviesLocal')) : movies
         }

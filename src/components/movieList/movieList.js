@@ -4,6 +4,7 @@ import Movie from '../movie/movie';
 
 import './movieList.scss';
 
+let text = '';
 function MovieList(props) {
   const {
     movies,
@@ -15,37 +16,41 @@ function MovieList(props) {
     countLocalMovies,
     genres,
   } = props;
+
+  text = !isRated ? (
+    <p>Напишите название фильма</p>
+  ) : (
+    <p>Вы ещё не оценивали фильмы</p>
+  );
+
   return (
     <>
       <ul className="movieList">
-        {movies === null ? (
-          <p>Вы ещё не оценивали фильмы</p>
-        ) : (
-          movies.map((movie) => (
-            <Movie
-              {...movie}
-              updateGrade={updateGrade}
-              addMovieListRating={addMovieListRating}
-              isRated={isRated}
-              genres={genres}
-            />
-          ))
-        )}
+        {!movies
+          ? text
+          : movies.map((movie) => (
+              <Movie
+                {...movie}
+                updateGrade={updateGrade}
+                addMovieListRating={addMovieListRating}
+                isRated={isRated}
+                genres={genres}
+              />
+            ))}
       </ul>
       <div className="paginator">
-        {movies !== null ? (
-          <Pagination
-            onChange={(page) => {
-              onChangePage(page);
-            }}
-            defaultCurrent={1}
-            total={isRated ? countLocalMovies || 1 : count}
-            defaultPageSize={20}
-            showSizeChanger={false}
-            itemActiveBg="#1890FF"
-            itemActiveBgDisabled="#1890FF"
-          />
-        ) : null}
+        <Pagination
+          onChange={(page) => {
+            onChangePage(page);
+          }}
+          defaultCurrent={1}
+          total={isRated ? countLocalMovies || 1 : count}
+          defaultPageSize={20}
+          showSizeChanger={false}
+          itemActiveBg="#1890FF"
+          itemActiveBgDisabled="#1890FF"
+          hideOnSinglePage
+        />
       </div>
     </>
   );
