@@ -23,6 +23,7 @@ export default class App extends React.Component {
   }
 
   async componentDidMount() {
+    localStorage.clear();
     const res = await MovieService.createSession();
     const gen = await MovieService.getGenres();
 
@@ -59,7 +60,7 @@ export default class App extends React.Component {
 
     localStorage.getItem(id);
 
-    if (localStorage.length === 0) {
+    if (!currentLocalMovie) {
       localStorage.setItem('moviesLocal', JSON.stringify(movieObj));
 
       this.setState({ countLocalMovies: 1 });
