@@ -1,11 +1,9 @@
-// eslint-disable-next-line no-unused-vars
-import React, { Component } from 'react';
+import React from 'react';
 import { format } from 'date-fns';
 import { enGB } from 'date-fns/locale';
 import PropTypes from 'prop-types';
 import { Space, Tag, Rate } from 'antd';
 import './movie.scss';
-// import { defaultProps } from 'react-detect-offline';
 
 let maxId = 1000000;
 
